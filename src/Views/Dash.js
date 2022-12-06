@@ -1,12 +1,11 @@
 import React from "react";
 import PropTypes from "prop-types";
-import DaysCompleted from "../Components/DaysCompleted";
-import CheckinComment from "../Components/CheckinComment";
+
 import styled from "styled-components";
 
 function Dash(props) {
 
-  const { checkins } = props;
+
 
   const HeadingStyled = styled.div`
     text-align: center;

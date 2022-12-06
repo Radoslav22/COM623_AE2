@@ -5,7 +5,7 @@ import Header from "./Components/Header";
 import GlobalStyles from "./config/globalStyles";
 import theme from "./config/theme.js";
 import Login from "./Views/Login";
-import Checkin from "./Views/Checkin";
+
 import Dash from "./Views/Dash";
 import Join from "./Views/Join";
 import Profile from "./Views/Profile";
@@ -40,7 +40,7 @@ function App() {
         >
           <Switch>
             <Route exact path="/">
-              <Dash checkins={checkins} />
+              <Dash />
             </Route>
             <Route path="/login">
               <Login />
@@ -51,8 +51,8 @@ function App() {
             <Route path="/profile">
               <Profile />
             </Route>
-            <Route path="/checkin">
-              <Checkin />
+            <Route path="/">
+
             </Route>
           </Switch>
         </div>

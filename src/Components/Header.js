@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
-import avatarLarge from "../assets/avatar_small.png";
+
 import SolentLogo from "../assets/Solentlogo.png"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCalendar, faHome, faList, faStopwatch, faUser } from "@fortawesome/free-solid-svg-icons";

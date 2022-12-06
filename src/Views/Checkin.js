@@ -1,7 +1,7 @@
 import React from "react";
 import Tile from "../Components/Tile";
 import styled from "styled-components";
-import CheckinForm from "../Components/CheckinForm";
+
 
 const StyledTile = styled(Tile)`
   display: grid;
@@ -21,7 +21,6 @@ const Checkin = () => {
   return (
     <StyledTile>
       <StyledHeading> Log Your Progress </StyledHeading>
-      <CheckinForm />
     </StyledTile>
   );
 };
