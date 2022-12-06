@@ -1,13 +1,14 @@
 import PropTypes from "prop-types";
 import React, { useState } from "react";
 import styled from "styled-components";
-import facebook from "../assets/facebook.png";
-import google from "../assets/google.png";
 import Button from "../Components/Button";
 import { useForm } from "react-hook-form";
 import Input from "../Components/Input";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import Microsoft from "../assets/microsoft.png"
+
 
 function LoginForm(props) {
   const { buttonText, onEmailSubmit, onSocialSubmit } = props;
@@ -26,13 +27,7 @@ function LoginForm(props) {
     })
     .required();
 
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm({
-    resolver: yupResolver(loginFormSchema),
-  });
+  const { register, handleSubmit, formState: { errors }, } = useForm({ resolver: yupResolver(loginFormSchema), });
 
   const StyledErrorLabel = styled.label`
     color: red;
@@ -43,7 +38,7 @@ function LoginForm(props) {
   const StyledHeading = styled.h2`
     text-align: center;
     margin-top: 2%;
-    color: ${({ theme }) => theme.colors.purple};
+    
   `;
 
   const StyledSocialIconArea = styled.div`
@@ -55,6 +50,8 @@ function LoginForm(props) {
     }
   `;
 
+
+
   const handleClick = (e) => {
     e.preventDefault();
     setDisplayEmail(!displayEmail);
@@ -64,12 +61,8 @@ function LoginForm(props) {
   return (
     <React.Fragment>
       <StyledSocialIconArea>
-        <img
-          src={facebook}
-          alt="#"
-          onClick={() => onSocialSubmit("facebook")}
-        />
-        <img src={google} alt="#" onClick={() => onSocialSubmit("google")} />
+
+        <img src={Microsoft} alt="#" onClick={() => onSocialSubmit("google")} />
       </StyledSocialIconArea>
       <StyledHeading> OR </StyledHeading>
 

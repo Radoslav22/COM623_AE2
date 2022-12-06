@@ -15,7 +15,7 @@ function Join() {
 
   const StyledTile = styled(Tile)`
     display: grid;
-    grid-template-columns: repeat(1, 1fr);
+    
     justify-content: center;
     grid-row-gap: 20px;
     width: 100%;
@@ -27,7 +27,7 @@ function Join() {
   const StyledHeading = styled.h2`
     text-align: center;
     margin-top: 2%;
-    color: ${({ theme }) => theme.colors.purple};
+   
   `;
   const StyledLink = styled(Link)`
     text-align: center;
@@ -42,7 +42,7 @@ function Join() {
           onEmailSubmit={(d) => console.log(d)}
           onSocialSubmit={(m) => console.log("social submit" + m)}
         />
-        <StyledLink to="/login"> Already a member - Login </StyledLink>
+        <StyledLink to="/login"> Already have an account? Login</StyledLink>
       </StyledTile>
     </StyledWrapper>
   );

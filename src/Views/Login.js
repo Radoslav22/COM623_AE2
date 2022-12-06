@@ -10,7 +10,7 @@ import Tile from "../Components/Tile";
 function Login() {
 
 
-	const StyledWrapper = styled.div`
+  const StyledWrapper = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
@@ -18,9 +18,9 @@ function Login() {
     min-width: 100vw;
   `;
 
-	const StyledTile = styled(Tile)`
+  const StyledTile = styled(Tile)`
     display: grid;
-    grid-template-columns: repeat(1, 1fr);
+    
     justify-content: center;
     grid-row-gap: 20px;
     width: 100%;
@@ -29,26 +29,26 @@ function Login() {
     }
   `;
 
-	const StyledHeading = styled.h2`
+  const StyledHeading = styled.h2`
     text-align: center;
     margin-top: 2%;
-    color: ${({ theme }) => theme.colors.purple};
+    
   `;
-	const StyledLink = styled(Link)`
+  const StyledLink = styled(Link)`
     text-align: center;
   `;
 
 
-	return (
-		<StyledWrapper>
-			<StyledTile>
+  return (
+    <StyledWrapper>
+      <StyledTile>
 
-				<StyledHeading>Login With </StyledHeading>
-				<Form buttonText="LOGIN" />
-				<StyledLink to="/join"> Not a member - Join </StyledLink>
-			</StyledTile>
-		</StyledWrapper>
-	);
+        <StyledHeading>Login with </StyledHeading>
+        <Form buttonText="LOGIN" />
+        <StyledLink to="/join"> Doesn't have an account? Sign up </StyledLink>
+      </StyledTile>
+    </StyledWrapper>
+  );
 }
 
 export default Login;

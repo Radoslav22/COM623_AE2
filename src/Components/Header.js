@@ -4,11 +4,10 @@ import styled from "styled-components";
 import avatarLarge from "../assets/avatar_small.png";
 import SolentLogo from "../assets/Solentlogo.png"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCalendar, faCalendarAlt, faChevronDown, faClock, faHome, faList, faStopwatch, faTimes, faTimesCircle, faUser, faWindowMinimize } from "@fortawesome/free-solid-svg-icons";
-import { faEnvelope } from '@fortawesome/free-solid-svg-icons'
+import { faCalendar, faHome, faList, faStopwatch, faUser } from "@fortawesome/free-solid-svg-icons";
 import { Link, useLocation } from "react-router-dom";
 import theme from "../config/theme";
-import { faCalendarCheck, faListAlt } from "@fortawesome/free-regular-svg-icons";
+
 
 
 function Menu(props) {
