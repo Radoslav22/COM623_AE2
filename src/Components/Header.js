@@ -4,7 +4,8 @@ import styled from "styled-components";
 
 import SolentLogo from "../assets/Solentlogo.png"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCalendar, faHome, faList, faStopwatch, faUser } from "@fortawesome/free-solid-svg-icons";
+import { faHome, faList, faStopwatch, faUser } from "@fortawesome/free-solid-svg-icons";
+import { faCalendar } from "@fortawesome/free-regular-svg-icons";
 import { Link, useLocation } from "react-router-dom";
 import theme from "../config/theme";
 
@@ -100,7 +101,7 @@ function Header(props) {
     position: absolute;
     width: 60px;
     height: 60px;
-    left: 348px;
+    right: 22px;
     top: 31px;
     `;
 
@@ -136,7 +137,7 @@ function Header(props) {
       position: absolute;
       width: 99px;
       height: 36px;
-      left: 147px;
+      left: 130px;
       top: 26px;
     }`
 
@@ -158,7 +159,7 @@ function Header(props) {
           <hr />
         </StyledBurgerMenu>
         <SolentImage>
-          <img src={SolentLogo}></img>
+          <img src={SolentLogo} alt="Solent Logo"></img>
         </SolentImage>
         <StyledUserLogo>
           <FontAwesomeIcon style={{ width: "27px", height: "27px" }} icon={faUser} />
