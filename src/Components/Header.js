@@ -99,7 +99,7 @@ function Header(props) {
   const StyledUserLogo = styled.div`
     
     position: absolute;
-    width: 60px;
+    
     height: 60px;
     right: 22px;
     top: 31px;
@@ -135,9 +135,9 @@ function Header(props) {
     justify-content: space-between;
     img{
       position: absolute;
-      width: 99px;
+      
       height: 36px;
-      left: 130px;
+      left: 145px;
       top: 26px;
     }`
 

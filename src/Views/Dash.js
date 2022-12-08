@@ -12,16 +12,23 @@ function Dash(props) {
 
 
   const HomeWrapper = styled.div`
-    
+    display:contents;
     text-align: center;
-    
+    justify-content: center;
   `
   const HeadingStyled = styled.div`
     text-align: center;
   `
 
   const HomeList = styled.ul`
-    
+  
+  padding: 0;
+ 
+  display: inherit;
+   
+  
+
+  justify-content: center; 
   `
   const HomeItems = styled.li`
     
@@ -32,10 +39,10 @@ function Dash(props) {
     width: 303px;
     height: 107px;
     
-    margin: 5%;
+    margin: 5% 0 0 10% ;
     
     border-radius: 10px;
-
+    cursor: pointer;
   `
   const IconDiv = styled.div`
     display:flex;
@@ -60,21 +67,21 @@ function Dash(props) {
           <HomeItems style={{ background: theme.colors.navygreen }}>
             <h5>Check List</h5>
             <IconDiv>
-              <FontAwesomeIcon style={{ width: "86px", height: "86px", opacity: "0.7" }} icon={faList} />
+              <FontAwesomeIcon style={{ width: "86px", height: "86px" }} icon={faList} />
             </IconDiv>
           </HomeItems>
 
           <HomeItems style={{ background: theme.colors.green }}>
             <h5>Timer</h5>
             <IconDiv>
-              <FontAwesomeIcon style={{ width: "86px", height: "86px", opacity: "0.7" }} icon={faStopwatch} />
+              <FontAwesomeIcon style={{ width: "86px", height: "86px" }} icon={faStopwatch} />
             </IconDiv>
           </HomeItems>
 
           <HomeItems style={{ background: theme.colors.greenblue }}>
             <h5>Calendar</h5>
             <IconDiv>
-              <FontAwesomeIcon style={{ width: "86px", height: "86px", opacity: "0.7" }} icon={faCalendar} />
+              <FontAwesomeIcon style={{ width: "86px", height: "86px" }} icon={faCalendar} />
             </IconDiv>
           </HomeItems>
 
