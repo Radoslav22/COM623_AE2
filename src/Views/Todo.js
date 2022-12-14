@@ -17,7 +17,7 @@ const StyledHeading = styled.h4`
   color: ${({ theme }) => theme.colors.purple};
 `;
 
-const Checkin = () => {
+const Todo = () => {
   return (
     <StyledTile>
       <StyledHeading> Log Your Progress </StyledHeading>
@@ -25,4 +25,4 @@ const Checkin = () => {
   );
 };
 
-export default Checkin;
+export default Todo;

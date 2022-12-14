@@ -8,7 +8,7 @@ import styled from "styled-components";
 
 
 
-function Dash(props) {
+function Home(props) {
 
 
   const HomeWrapper = styled.div`
@@ -92,10 +92,10 @@ function Dash(props) {
   );
 }
 
-Dash.propTypes = {
+Home.propTypes = {
   checkins: PropTypes.array.isRequired
 };
 
-export default Dash;
+export default Home;
 
 

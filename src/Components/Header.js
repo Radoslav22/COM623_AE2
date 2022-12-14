@@ -49,9 +49,9 @@ function Menu(props) {
       <StyledNav>
         <ul>
           <StyledLi active={location.pathname === "/"}>  <Link style={{ textDecoration: "none", color: "white", fontSize: "24px" }} to="/"><FontAwesomeIcon icon={faHome} /> Home </Link> </StyledLi>
-          <StyledLi active={location.pathname === "/profile"}>  <Link style={{ textDecoration: "none", color: "white", fontSize: "24px" }} to="/profile"><FontAwesomeIcon icon={faStopwatch} /> Timer </Link> </StyledLi>
-          <StyledLi active={location.pathname === "/profile"}>  <Link style={{ textDecoration: "none", color: "white", fontSize: "24px" }} to="/profile"><FontAwesomeIcon icon={faCalendar} /> Calendar </Link> </StyledLi>
-          <StyledLi active={location.pathname === "/profile"}>  <Link style={{ textDecoration: "none", color: "white", fontSize: "24px" }} to="/profile"><FontAwesomeIcon icon={faList} /> Check List </Link> </StyledLi>
+          <StyledLi active={location.pathname === "/timer"}>  <Link style={{ textDecoration: "none", color: "white", fontSize: "24px" }} to="/timer"><FontAwesomeIcon icon={faStopwatch} /> Timer </Link> </StyledLi>
+          <StyledLi active={location.pathname === "/calendar"}>  <Link style={{ textDecoration: "none", color: "white", fontSize: "24px" }} to="/calendar"><FontAwesomeIcon icon={faCalendar} /> Calendar </Link> </StyledLi>
+          <StyledLi active={location.pathname === "/todo"}>  <Link style={{ textDecoration: "none", color: "white", fontSize: "24px" }} to="/todo"><FontAwesomeIcon icon={faList} /> Check List </Link> </StyledLi>
         </ul>
       </StyledNav>
     </div >

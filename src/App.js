@@ -6,9 +6,11 @@ import GlobalStyles from "./config/globalStyles";
 import theme from "./config/theme.js";
 import Login from "./Views/Login";
 
-import Dash from "./Views/Dash";
+import Home from "./Views/Home";
 import Join from "./Views/Join";
-import Profile from "./Views/Profile";
+import Timer from "./Views/Timer";
+import Todo from "./Views/Todo";
+import Calendar from "./Views/Calendar";
 
 
 function App() {
@@ -40,7 +42,7 @@ function App() {
         >
           <Switch>
             <Route exact path="/">
-              <Dash />
+              <Home />
             </Route>
             <Route path="/login">
               <Login />
@@ -48,11 +50,14 @@ function App() {
             <Route path="/join">
               <Join />
             </Route>
-            <Route path="/profile">
-              <Profile />
+            <Route path="/todo">
+              <Todo />
             </Route>
-            <Route path="/">
-
+            <Route path="/timer">
+              <Timer />
+            </Route>
+            <Route path="/calendar">
+              <Calendar />
             </Route>
           </Switch>
         </div>
