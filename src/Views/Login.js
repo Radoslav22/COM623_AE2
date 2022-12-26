@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import Form from "../Components/LoginForm";
+import Form from "../Components/LoginForm2";
 import Tile from "../Components/Tile";
 
 
@@ -29,23 +29,16 @@ function Login() {
     }
   `;
 
-  const StyledHeading = styled.h2`
-    text-align: center;
-    margin-top: 2%;
-    
-  `;
-  const StyledLink = styled(Link)`
-    text-align: center;
-  `;
+
 
 
   return (
     <StyledWrapper>
       <StyledTile>
 
-        <StyledHeading>Login with </StyledHeading>
+
         <Form buttonText="LOGIN" />
-        <StyledLink to="/join"> Doesn't have an account? Sign up </StyledLink>
+
       </StyledTile>
     </StyledWrapper>
   );

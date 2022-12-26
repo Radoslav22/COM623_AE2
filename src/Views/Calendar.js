@@ -1,7 +1,9 @@
 import React from "react";
 import Tile from "../Components/Tile";
 import styled from "styled-components";
-
+import { LocalizationProvider } from '@mui/x-date-pickers';
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
+import { CalendarPicker } from '@mui/x-date-pickers';
 
 const StyledTile = styled(Tile)`
   display: grid;
@@ -21,6 +23,9 @@ const Calendar = () => {
   return (
     <StyledTile>
       <StyledHeading> Calendar </StyledHeading>
+      <LocalizationProvider dateAdapter={AdapterDayjs}>
+        <CalendarPicker />
+      </LocalizationProvider>
     </StyledTile>
   );
 };

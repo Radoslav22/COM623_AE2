@@ -7,7 +7,12 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHome, faList, faStopwatch, faUser } from "@fortawesome/free-solid-svg-icons";
 import { faCalendar } from "@fortawesome/free-regular-svg-icons";
 import { Link, useLocation } from "react-router-dom";
-import theme from "../config/theme";
+import { MenuSharp, Close } from '@mui/icons-material';
+import { grey } from '@mui/material/colors';
+
+
+/// The native icons from the MUI
+
 
 
 
@@ -43,9 +48,11 @@ function Menu(props) {
     cursor: pointer;
   `;
 
+
   return (
     <div>
-      <StyledClosedText onClick={onClick}> X </StyledClosedText>
+      <StyledClosedText onClick={onClick} ><Close sx={{ color: grey[100] }} />  </StyledClosedText>
+
       <StyledNav>
         <ul>
           <StyledLi active={location.pathname === "/"}>  <Link style={{ textDecoration: "none", color: "white", fontSize: "24px" }} to="/"><FontAwesomeIcon icon={faHome} /> Home </Link> </StyledLi>
@@ -153,10 +160,7 @@ function Header(props) {
       <StyledWrapper>
 
         <StyledBurgerMenu onClick={handleClick}>
-          <hr />
-          <hr />
-          <hr />
-          <hr />
+          <MenuSharp color="grey" />
         </StyledBurgerMenu>
         <SolentImage>
           <img src={SolentLogo} alt="Solent Logo"></img>
