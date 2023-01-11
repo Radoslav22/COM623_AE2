@@ -19,8 +19,10 @@ import ListItemText from '@mui/material/ListItemText';
 import InboxIcon from '@mui/icons-material/MoveToInbox';
 import MailIcon from '@mui/icons-material/Mail';
 import useAuth from "../services/firebase/useAuth";
-import { AccountCircle } from '@mui/icons-material';
+import { AccountCircle, Home, Timer, CalendarToday, PlaylistAddCheck } from '@mui/icons-material';
 import SolentLogo from "../assets/Solentlogo.png"
+import { white } from '@mui/material/colors';
+import { Link } from 'react-router-dom';
 
 const drawerWidth = 240;
 
@@ -85,7 +87,7 @@ export default function HeaderMenu() {
     };
 
     return (
-        <Box sx={{ display: 'flex' }}>
+        <Box sx={{ display: 'flex' }} >
             <CssBaseline />
             <AppBar position="static" open={open} sx={{ alignContent: "center", background: 'white' }}>
                 <Toolbar>
@@ -101,7 +103,7 @@ export default function HeaderMenu() {
                     {/* <Typography >
                             <h6> {user.displayName || user.email}  <span onClick={signUserOut}>(Logout)</span></h6> 
                     </Typography> */}
-                    <img src={SolentLogo} alt="Solent Logo" style={{ height: '36px' }} ></img>
+                    <img src={SolentLogo} alt="Solent Logo" style={{ display: 'block', marginLeft: 'auto', marginRight: 'auto', height: '36px' }} ></img>
                     <IconButton
                         size="large"
                         aria-label="account of current user"
@@ -122,6 +124,7 @@ export default function HeaderMenu() {
                     '& .MuiDrawer-paper': {
                         width: drawerWidth,
                         boxSizing: 'border-box',
+                        background: "#93A392"
                     },
                 }}
                 variant="persistent"
@@ -134,31 +137,45 @@ export default function HeaderMenu() {
                     </IconButton>
                 </DrawerHeader>
                 <Divider />
-                <List>
-                    {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-                        <ListItem key={text} disablePadding>
-                            <ListItemButton>
-                                <ListItemIcon>
-                                    {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-                                </ListItemIcon>
-                                <ListItemText primary={text} />
-                            </ListItemButton>
-                        </ListItem>
-                    ))}
+                <List >
+                    <Link style={{ textDecoration: "none" }} to='/'>
+                        <ListItemButton >
+
+                            <ListItemIcon>
+                                <Home sx={{ color: 'white' }} />
+                            </ListItemIcon >
+                            <ListItemText sx={{ color: 'white' }}>Home</ListItemText>
+
+                        </ListItemButton>
+                    </Link>
+                    <Link style={{ textDecoration: "none" }} to='/timer'>
+                        <ListItemButton>
+                            <ListItemIcon>
+                                <Timer sx={{ color: 'white' }} />
+                            </ListItemIcon >
+                            <ListItemText sx={{ color: 'white' }}>Timer</ListItemText>
+                        </ListItemButton>
+                    </Link>
+                    <Link style={{ textDecoration: "none" }} to='/calendar'>
+                        <ListItemButton>
+                            <ListItemIcon>
+                                <CalendarToday sx={{ color: 'white' }} />
+                            </ListItemIcon >
+                            <ListItemText sx={{ color: 'white' }}>Calendar</ListItemText>
+                        </ListItemButton>
+                    </Link>
+                    <Link style={{ textDecoration: "none" }} to='/checklist'>
+                        <ListItemButton>
+                            <ListItemIcon >
+                                <PlaylistAddCheck sx={{ color: 'white' }} />
+                            </ListItemIcon >
+                            <ListItemText sx={{ color: 'white' }}>Check List</ListItemText>
+                        </ListItemButton>
+                    </Link>
+
                 </List>
                 <Divider />
-                <List>
-                    {['All mail', 'Trash', 'Spam'].map((text, index) => (
-                        <ListItem key={text} disablePadding>
-                            <ListItemButton>
-                                <ListItemIcon>
-                                    {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-                                </ListItemIcon>
-                                <ListItemText primary={text} />
-                            </ListItemButton>
-                        </ListItem>
-                    ))}
-                </List>
+
             </Drawer>
 
         </Box >
