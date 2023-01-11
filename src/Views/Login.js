@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import Form from "../Components/LoginForm2";
 import Tile from "../Components/Tile";
+import useAuth from "../services/firebase/useAuth";
 
 
 
@@ -29,6 +30,31 @@ function Login() {
     }
   `;
 
+  const [serverErrorMessage, setServerErrorMessage] = useState();
+  const { signInEmailUser, signInFacebookUser, signInGoogleUser } = useAuth();
+
+  const handleEmailSubmit = async (data) => {
+    try {
+      console.log(data);
+      const { email, password } = data;
+      await signInEmailUser(email, password);
+    } catch (e) {
+      setServerErrorMessage(e.message);
+    }
+  };
+
+  const handleSocialSubmit = async (method) => {
+    try {
+      if (method === "facebook") {
+        await signInFacebookUser();
+      }
+      if (method === "google") {
+        await signInGoogleUser();
+      }
+    } catch (error) {
+      console.log("error" + error);
+    }
+  };
 
 
 
@@ -37,7 +63,13 @@ function Login() {
       <StyledTile>
 
 
-        <Form buttonText="LOGIN" />
+
+        <Form
+          buttonText="LOGIN"
+          serverErrorMessage={serverErrorMessage}
+          onEmailSubmit={handleEmailSubmit}
+          onSocialSubmit={handleSocialSubmit}
+        />
 
       </StyledTile>
     </StyledWrapper>

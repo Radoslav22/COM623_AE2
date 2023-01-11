@@ -9,14 +9,15 @@ import { faCalendar } from "@fortawesome/free-regular-svg-icons";
 import { Link, useLocation } from "react-router-dom";
 import { MenuSharp, Close } from '@mui/icons-material';
 import { grey } from '@mui/material/colors';
-
+import useAuth from "../services/firebase/useAuth";
+import HeaderMenu from "./Menu";
 
 /// The native icons from the MUI
 
 
 
 
-function Menu(props) {
+/* function Menu(props) {
   const { onClick } = props;
   const location = useLocation();
   const StyledNav = styled.nav`
@@ -67,7 +68,7 @@ function Menu(props) {
 
 Menu.propTypes = {
   onClick: PropTypes.func.isRequired
-};
+}; */
 
 function Header(props) {
 
@@ -81,7 +82,8 @@ function Header(props) {
   };
 
 
-
+  const { user, signUserOut } = useAuth();
+  if (!user.uid) { return "" }
 
 
   const StyledBurgerMenu = styled.div`
@@ -154,7 +156,7 @@ function Header(props) {
     <div  >
       <hr style={{ color: "none" }} />
       <StyledMenuWrapper open={open}>
-        <Menu onClick={handleClick} />
+        <HeaderMenu onClick={handleClick} />
       </StyledMenuWrapper>
 
       <StyledWrapper>
@@ -166,7 +168,9 @@ function Header(props) {
           <img src={SolentLogo} alt="Solent Logo"></img>
         </SolentImage>
         <StyledUserLogo>
+
           <FontAwesomeIcon style={{ width: "27px", height: "27px" }} icon={faUser} />
+
         </StyledUserLogo>
       </StyledWrapper>
       <hr />
@@ -180,3 +184,59 @@ Header.propTypes = {
 }
 
 export default Header;
+
+
+
+
+
+
+
+
+{/* <AppBar position="static">
+        <Toolbar>
+          <IconButton
+            size="large"
+            edge="start"
+            color="inherit"
+            aria-label="menu"
+            sx={{ mr: 2 }}
+          >
+            <MenuIcon />
+          </IconButton>
+          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+            Photos
+          </Typography>
+          {auth && (
+            <div>
+              <IconButton
+                size="large"
+                aria-label="account of current user"
+                aria-controls="menu-appbar"
+                aria-haspopup="true"
+                onClick={handleMenu}
+                color="inherit"
+              >
+                <AccountCircle />
+              </IconButton>
+              <Menu
+                id="menu-appbar"
+                anchorEl={anchorEl}
+                anchorOrigin={{
+                  vertical: 'top',
+                  horizontal: 'right',
+                }}
+                keepMounted
+                transformOrigin={{
+                  vertical: 'top',
+                  horizontal: 'right',
+                }}
+                open={Boolean(anchorEl)}
+                onClose={handleClose}
+              >
+                <MenuItem onClick={handleClose}>Profile</MenuItem>
+                <MenuItem onClick={handleClose}>My account</MenuItem>
+              </Menu>
+            </div>
+          )}
+        </Toolbar>
+      </AppBar> */}

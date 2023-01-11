@@ -1,4 +1,7 @@
 import * as React from 'react';
+import * as yup from "yup";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { useForm } from "react-hook-form";
 import Avatar from '@mui/material/Avatar';
 import Button from "../Components/Button";
 import CssBaseline from '@mui/material/CssBaseline';
@@ -12,6 +15,9 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import Microsoft from '../assets/microsoft.png';
+
+
 
 function Copyright(props) {
 
@@ -19,7 +25,7 @@ function Copyright(props) {
         <Typography variant="body2" color="text.secondary" align="center" {...props}>
             {'Copyright © '}
             <Link color="inherit" href="https://mui.com/">
-                Your Website
+                Website
             </Link>{' '}
             {new Date().getFullYear()}
             {'.'}
@@ -31,15 +37,25 @@ const theme = createTheme();
 
 export default function SignIn(props) {
     const { buttonText, onEmailSubmit, onSocialSubmit } = props;
-    const handleSubmit = (event) => {
-        event.preventDefault();
-        const data = new FormData(event.currentTarget);
-        console.log({
-            email: data.get('email'),
-            password: data.get('password'),
-        });
-    };
 
+
+    const loginFormSchema = yup
+        .object({
+            email: yup
+                .string()
+                .email("please enter a valid email")
+                .required("please enter a email"),
+            password: yup
+                .string()
+                .required("please enter a password")
+                .min(5, "password must be 5 characters long"),
+        })
+        .required();
+    const { register, handleSubmit, formState: { errors }, } = useForm({ resolver: yupResolver(loginFormSchema), }, console.log(loginFormSchema.object));
+
+
+
+    const errorBorder = (error) => error && { borderColor: "red" };
     return (
         <ThemeProvider theme={theme}>
             <Container component="main" maxWidth="xs">
@@ -52,13 +68,14 @@ export default function SignIn(props) {
                         alignItems: 'center',
                     }}
                 >
-                    <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
-                        <LockOutlinedIcon />
-                    </Avatar>
+
                     <Typography component="h1" variant="h5">
                         Sign in
                     </Typography>
-                    <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
+                    <img src={Microsoft} alt="#" onClick={() => onSocialSubmit("google")} />
+
+                    <form onSubmit={handleSubmit(onEmailSubmit)}>
+
                         <TextField
                             margin="normal"
                             required
@@ -67,7 +84,9 @@ export default function SignIn(props) {
                             label="Email Address"
                             name="email"
                             autoComplete="email"
+                            type='text'
                             autoFocus
+                            {...register("email")}
                         />
                         <TextField
                             margin="normal"
@@ -78,6 +97,7 @@ export default function SignIn(props) {
                             type="password"
                             id="password"
                             autoComplete="current-password"
+                            {...register("password")}
                         />
 
                         <Button
@@ -99,10 +119,15 @@ export default function SignIn(props) {
                                 </Link>
                             </Grid>
                         </Grid>
-                    </Box>
+
+
+
+
+                    </form>
                 </Box>
+
                 <Copyright sx={{ mt: 8, mb: 4 }} />
             </Container>
-        </ThemeProvider>
+        </ThemeProvider >
     );
 }

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { Route, Switch, useLocation } from "react-router-dom";
+import useAuth from "./services/firebase/useAuth";
+import { Switch, Route, useLocation, useHistory, Redirect, } from "react-router-dom";
 import { ThemeProvider } from "styled-components";
 import Header from "./Components/Header";
 import GlobalStyles from "./config/globalStyles";
@@ -11,11 +12,49 @@ import Join from "./Views/Join";
 import Timer from "./Views/Timer";
 import Todo from "./Views/Todo";
 import Calendar from "./Views/Calendar";
+import { initializeApp } from "firebase/app";
+import firebaseConfig from "./config/firebaseConfig";
+import HeaderMenu from "./Components/Menu";
+
+function Protected({ authenticated, children, ...rest }) {
+
+  return (
+    <Route
+      {...rest}
+      render={({ location }) =>
+        authenticated ? (
+          children
+        ) : (
+          <Redirect
+            to={{
+              pathname: "/login",
+              state: { from: location },
+            }}
+          />
+        )
+      }
+    />
+  );
+}
 
 
 function App() {
   const [menuOpen, setMenuOpen] = useState(false);
   const location = useLocation();
+  const history = useHistory();
+  const app = initializeApp(firebaseConfig);
+
+  const { isAuthenticated, createEmailUser, signInEmailUser, signUserOut } =
+    useAuth();
+
+  useEffect(() => {
+    console.log("is authenticated", isAuthenticated)
+    console.log("email", signInEmailUser)
+    if (isAuthenticated) {
+      history.push(history.location.state.from.pathname);
+    }
+    return;
+  }, [isAuthenticated]);
 
   const handleClick = (e) => {
     setMenuOpen(!menuOpen);
@@ -32,8 +71,8 @@ function App() {
   return (
     <div>
       <ThemeProvider theme={theme}>
-        {location.pathname !== "/join" && (
-          <Header onClick={handleClick} open={menuOpen} />
+        {location.pathname !== "/join" && location.pathname !== "/login" && (
+          <HeaderMenu onClick={handleClick} open={menuOpen} signOut={signUserOut} />
         )}
         <GlobalStyles />
         <div
@@ -41,24 +80,24 @@ function App() {
           style={{ width: "100vw", height: "100vh" }}
         >
           <Switch>
-            <Route exact path="/">
+            <Protected authenticated={isAuthenticated} exact path="/">
               <Home />
-            </Route>
+            </Protected>
             <Route path="/login">
-              <Login />
+              <Login signInEmailUser={signInEmailUser} />
             </Route>
             <Route path="/join">
-              <Join />
+              <Join createEmailUser={createEmailUser} />
             </Route>
-            <Route path="/todo">
+            <Protected authenticated={isAuthenticated} path="/todo">
               <Todo />
-            </Route>
-            <Route path="/timer">
+            </Protected>
+            <Protected authenticated={isAuthenticated} exact path="/timer">
               <Timer />
-            </Route>
-            <Route path="/calendar">
+            </Protected>
+            <Protected authenticated={isAuthenticated} exact path="/calendar">
               <Calendar />
-            </Route>
+            </Protected>
           </Switch>
         </div>
       </ThemeProvider>
