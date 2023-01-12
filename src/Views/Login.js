@@ -35,7 +35,6 @@ function Login() {
 
   const handleEmailSubmit = async (data) => {
     try {
-      console.log(data);
       const { email, password } = data;
       await signInEmailUser(email, password);
     } catch (e) {

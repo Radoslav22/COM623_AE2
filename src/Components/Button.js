@@ -2,26 +2,27 @@ import React from "react";
 import PropTypes from "prop-types";
 import MuiButton from '@mui/material/Button';
 
-function Button(props) {
+function SubmitButton(props) {
 
-  const { onClick, text } = props;
+  const { text } = props;
 
   return (
     <MuiButton style={{ background: "#BAD9A2", color: 'black' }}
-      onClick={onClick}
+
+      type="submit"
       fullWidth
       variant="contained"
       sx={{ mt: 3, mb: 2 }} > {text} </MuiButton >
   )
 }
 
-Button.propTypes = {
-  onClick: PropTypes.func,
+SubmitButton.propTypes = {
+
   text: PropTypes.string.isRequired
 }
 
-Button.defaultProps = {
+SubmitButton.defaultProps = {
   onClick: () => { }
 }
 
-export default Button;
+export default SubmitButton;

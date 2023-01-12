@@ -100,9 +100,9 @@ export default function HeaderMenu() {
                     >
                         <MenuIcon fontSize='large' />
                     </IconButton>
-                    {/* <Typography >
-                            <h6> {user.displayName || user.email}  <span onClick={signUserOut}>(Logout)</span></h6> 
-                    </Typography> */}
+                    <Typography >
+                        <h6> {user.displayName || user.email}  <span onClick={signUserOut}>(Logout)</span></h6>
+                    </Typography>
                     <img src={SolentLogo} alt="Solent Logo" style={{ display: 'block', marginLeft: 'auto', marginRight: 'auto', height: '36px' }} ></img>
                     <IconButton
                         size="large"

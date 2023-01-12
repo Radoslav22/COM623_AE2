@@ -40,6 +40,7 @@ export default function SignIn(props) {
     const { buttonText, onEmailSubmit, onSocialSubmit } = props;
 
 
+
     const loginFormSchema = yup
         .object({
             email: yup
@@ -52,7 +53,7 @@ export default function SignIn(props) {
                 .min(5, "password must be 5 characters long"),
         })
         .required();
-    const { register, handleSubmit, formState: { errors }, } = useForm({ resolver: yupResolver(loginFormSchema), }, console.log(loginFormSchema.object));
+    const { register, handleSubmit, formState: { errors }, } = useForm({ resolver: yupResolver(loginFormSchema), });
 
 
 
@@ -75,6 +76,39 @@ export default function SignIn(props) {
                     </Typography>
                     <img src={Microsoft} alt="#" onClick={() => onSocialSubmit("google")} />
 
+
+                    {/* <form onSubmit={handleSubmit(onEmailSubmit)}>
+
+                        <TextField
+                            margin="normal"
+                            required
+                            fullWidth
+                            id="email"
+                            label="Email Address"
+                            name="email"
+                            autoComplete="email"
+                            type='text'
+                            autoFocus
+                            {...register("email")}
+                        />
+                        <TextField
+                            margin="normal"
+                            required
+                            fullWidth
+                            name="password"
+                            label="Password"
+                            type="password"
+                            id="password"
+                            autoComplete="current-password"
+                            {...register("password")}
+                        />
+
+                        <Button
+                            text={buttonText}
+                            type="submit"
+
+                        />
+                    </form> */}
                     <form onSubmit={handleSubmit(onEmailSubmit)}>
 
                         <TextField
@@ -106,25 +140,25 @@ export default function SignIn(props) {
                             type="submit"
 
                         />
-
-
-                        <Grid container>
-                            <Grid item xs>
-                                <Link href="#" variant="body2">
-                                    Forgot password?
-                                </Link>
-                            </Grid>
-                            <Grid item>
-                                <Link href="/join" variant="body2">
-                                    {"Don't have an account? Sign Up"}
-                                </Link>
-                            </Grid>
-                        </Grid>
-
-
-
-
                     </form>
+
+                    <Grid container>
+                        <Grid item xs>
+                            <Link href="#" variant="body2">
+                                Forgot password?
+                            </Link>
+                        </Grid>
+                        <Grid item>
+                            <Link href="/join" variant="body2">
+                                {"Don't have an account? Sign Up"}
+                            </Link>
+                        </Grid>
+                    </Grid>
+
+
+
+
+
                 </Box>
 
                 <Copyright sx={{ mt: 8, mb: 4 }} />

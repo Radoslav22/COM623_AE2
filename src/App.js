@@ -48,8 +48,7 @@ function App() {
     useAuth();
 
   useEffect(() => {
-    console.log("is authenticated", isAuthenticated)
-    console.log("email", signInEmailUser)
+
     if (isAuthenticated) {
       history.push(history.location.state.from.pathname);
     }
