@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import useAuth from "./services/firebase/useAuth";
 import { Switch, Route, useLocation, useHistory, Redirect, } from "react-router-dom";
 import { ThemeProvider } from "styled-components";
-import Header from "./Components/Header";
+
 import GlobalStyles from "./config/globalStyles";
 import theme from "./config/theme.js";
 import Login from "./Views/Login";

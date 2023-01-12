@@ -98,7 +98,7 @@ export default function HeaderMenu() {
                         edge="start"
                         sx={{ mr: 2, ...(open && { display: 'none' }) }}
                     >
-                        <MenuIcon />
+                        <MenuIcon fontSize='large' />
                     </IconButton>
                     {/* <Typography >
                             <h6> {user.displayName || user.email}  <span onClick={signUserOut}>(Logout)</span></h6> 
@@ -112,7 +112,7 @@ export default function HeaderMenu() {
 
                         color="black"
                     >
-                        <AccountCircle />
+                        <AccountCircle fontSize='large' />
                     </IconButton>
                 </Toolbar>
 
@@ -142,7 +142,7 @@ export default function HeaderMenu() {
                         <ListItemButton >
 
                             <ListItemIcon>
-                                <Home sx={{ color: 'white' }} />
+                                <Home fontSize='large' sx={{ color: 'white' }} />
                             </ListItemIcon >
                             <ListItemText sx={{ color: 'white' }}>Home</ListItemText>
 
@@ -151,7 +151,7 @@ export default function HeaderMenu() {
                     <Link style={{ textDecoration: "none" }} to='/timer'>
                         <ListItemButton>
                             <ListItemIcon>
-                                <Timer sx={{ color: 'white' }} />
+                                <Timer fontSize='large' sx={{ color: 'white' }} />
                             </ListItemIcon >
                             <ListItemText sx={{ color: 'white' }}>Timer</ListItemText>
                         </ListItemButton>
@@ -159,7 +159,7 @@ export default function HeaderMenu() {
                     <Link style={{ textDecoration: "none" }} to='/calendar'>
                         <ListItemButton>
                             <ListItemIcon>
-                                <CalendarToday sx={{ color: 'white' }} />
+                                <CalendarToday fontSize='large' sx={{ color: 'white' }} />
                             </ListItemIcon >
                             <ListItemText sx={{ color: 'white' }}>Calendar</ListItemText>
                         </ListItemButton>
@@ -167,7 +167,7 @@ export default function HeaderMenu() {
                     <Link style={{ textDecoration: "none" }} to='/checklist'>
                         <ListItemButton>
                             <ListItemIcon >
-                                <PlaylistAddCheck sx={{ color: 'white' }} />
+                                <PlaylistAddCheck fontSize='large' sx={{ color: 'white' }} />
                             </ListItemIcon >
                             <ListItemText sx={{ color: 'white' }}>Check List</ListItemText>
                         </ListItemButton>

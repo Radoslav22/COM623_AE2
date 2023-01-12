@@ -1,101 +1,68 @@
-import React from "react";
-import PropTypes from "prop-types";
-import theme from "../config/theme";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCalendar } from "@fortawesome/free-regular-svg-icons";
-import { faList, faStopwatch } from "@fortawesome/free-solid-svg-icons";
-import styled from "styled-components";
+import * as React from 'react';
+import { styled } from '@mui/material/styles';
+import Box from '@mui/material/Box';
+import Paper from '@mui/material/Paper';
+import Grid from '@mui/material/Grid';
+import Link from '@mui/material/Link';
+
+import Typography from '@mui/material/Typography';
+import { Timer, CalendarToday, PlaylistAddCheck } from '@mui/icons-material';
+
+const StyledPaper = styled(Paper)(({ theme }) => ({
+  backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
+  ...theme.typography.body2,
+  padding: theme.spacing(0),
+  maxWidth: 400,
+  color: theme.palette.text.primary,
+}));
 
 
 
-function Home(props) {
-
-
-  const HomeWrapper = styled.div`
-    display:contents;
-    text-align: center;
-    justify-content: center;
-  `
-  const HeadingStyled = styled.div`
-    text-align: center;
-  `
-
-  const HomeList = styled.ul`
-  
-  padding: 0;
- 
-  display: inherit;
-   
-  
-
-  justify-content: center; 
-  `
-  const HomeItems = styled.li`
-    
-    border-radius: 5%;
-    text-align: left;
-    color: white;
-
-    width: 303px;
-    height: 107px;
-    
-    margin: 5% 0 0 10% ;
-    
-    border-radius: 10px;
-    cursor: pointer;
-  `
-  const IconDiv = styled.div`
-    display:flex;
-    justify-content: center;
-    margin-top:-2%;
-    
-    
-  `
-
-
+export default function AutoGridNoWrap() {
   return (
-    <div>
-      <HomeWrapper>
+    <Box sx={{ flexGrow: 1, overflow: 'hidden', px: 3 }}>
+      <Link href="/checklist" color="inherit" sx={{ textDecoration: "none" }}>
+        <StyledPaper sx={{ my: 6, mx: 'auto', p: 2, background: "#ADBF97" }}>
+          <Grid container wrap="nowrap" spacing={3}>
+            <Grid item >
+              <Typography sx={{ fontSize: "20px", color: "white" }}>Check list</Typography>
+            </Grid>
+            <Grid item xs >
 
-        <h3>Welcome to</h3>
-        <h3>Student time management</h3>
-        <h3>helper</h3>
+              <PlaylistAddCheck sx={{ fontSize: "100px", color: "white" }} />
+            </Grid>
+          </Grid>
+        </StyledPaper>
+      </Link>
 
+      <Link href="/timer" color="inherit" sx={{ textDecoration: "none" }}>
+        <StyledPaper sx={{ my: 10, mx: 'auto', p: 2, background: "#BAD9A2" }}>
+          <Grid container wrap="nowrap" spacing={6}>
 
-        <HomeList>
+            <Grid item>
+              <Typography sx={{ fontSize: "20px", color: "white" }}>Timer</Typography>
 
-          <HomeItems style={{ background: theme.colors.navygreen }}>
-            <h5>Check List</h5>
-            <IconDiv>
-              <FontAwesomeIcon style={{ width: "86px", height: "86px" }} icon={faList} />
-            </IconDiv>
-          </HomeItems>
+            </Grid>
+            <Grid item xs >
+              <Timer sx={{ fontSize: "100px", color: "white" }} />
+            </Grid>
+          </Grid>
+        </StyledPaper>
+      </Link>
 
-          <HomeItems style={{ background: theme.colors.green }}>
-            <h5>Timer</h5>
-            <IconDiv>
-              <FontAwesomeIcon style={{ width: "86px", height: "86px" }} icon={faStopwatch} />
-            </IconDiv>
-          </HomeItems>
+      <Link href="/Calendar" color="inherit" sx={{ textDecoration: "none" }}>
+        <StyledPaper sx={{ my: 10, mx: 'auto', p: 2, background: "#9DC4B5" }}>
+          <Grid container >
+            <Grid >
+              <Typography sx={{ fontSize: "20px", color: "white" }}>Calendar</Typography>
 
-          <HomeItems style={{ background: theme.colors.greenblue }}>
-            <h5>Calendar</h5>
-            <IconDiv>
-              <FontAwesomeIcon style={{ width: "86px", height: "86px" }} icon={faCalendar} />
-            </IconDiv>
-          </HomeItems>
-
-        </HomeList>
-
-      </HomeWrapper>
-    </div >
+            </Grid>
+            <Grid item xs>
+              <CalendarToday sx={{ fontSize: "100px", color: "white", display: 'block', marginLeft: '18%', marginRight: 'auto' }} />
+            </Grid>
+          </Grid>
+        </StyledPaper>
+      </Link>
+    </Box>
   );
 }
-
-Home.propTypes = {
-  checkins: PropTypes.array.isRequired
-};
-
-export default Home;
-
-
