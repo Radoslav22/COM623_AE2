@@ -17,7 +17,7 @@ function useAuth() {
 		onAuthStateChanged(auth, (user) => {
 			if (user) {
 				setIsAuthenticated(true);
-				console.log(user)
+
 				setUser(user);
 				return;
 			}

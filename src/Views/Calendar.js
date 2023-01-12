@@ -9,13 +9,16 @@ import useEvent from '../services/useEvent';
 import { useHistory } from 'react-router-dom';
 import useAuth from "../services/firebase/useAuth";
 import SubmitForm from '../Components/SubmitEventForm';
+import Events from "../Components/Events";
+import { useState, useEffect } from "react";
 
 
 
-
-export default function TemporaryDrawer() {
+function Calendar() {
   const history = useHistory();
   const { user } = useAuth();
+  const { getEvent } = useEvent();
+  const [events] = useState([]);
   const [state, setState] = React.useState({
 
     add: false,
@@ -41,9 +44,11 @@ export default function TemporaryDrawer() {
       history.push("/");
     } catch (e) {
       console.log(e);
-      console.log(e);
+
     }
   }
+
+
 
   const toggleDrawer = (anchor, open) => (event) => {
 
@@ -66,6 +71,8 @@ export default function TemporaryDrawer() {
       <LocalizationProvider dateAdapter={AdapterDayjs}>
         <CalendarPicker />
       </LocalizationProvider>
+      <Events />
+
       {['bottom'].map((anchor) => (
         <React.Fragment key={anchor}>
           <Button onClick={toggleDrawer(anchor, true)}>Add</Button>
@@ -74,6 +81,7 @@ export default function TemporaryDrawer() {
             open={state[anchor]}
             onClose={toggleDrawer(anchor, false)}
           >
+
             {list(anchor)}
           </Drawer>
         </React.Fragment>
@@ -81,7 +89,7 @@ export default function TemporaryDrawer() {
     </div>
   );
 }
-
+export default Calendar;
 
 
 
