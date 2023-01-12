@@ -164,7 +164,7 @@ export default function HeaderMenu() {
                             <ListItemText sx={{ color: 'white' }}>Calendar</ListItemText>
                         </ListItemButton>
                     </Link>
-                    <Link style={{ textDecoration: "none" }} to='/checklist'>
+                    <Link style={{ textDecoration: "none" }} to='/todo'>
                         <ListItemButton>
                             <ListItemIcon >
                                 <PlaylistAddCheck fontSize='large' sx={{ color: 'white' }} />

@@ -21,7 +21,7 @@ const StyledPaper = styled(Paper)(({ theme }) => ({
 export default function AutoGridNoWrap() {
   return (
     <Box sx={{ flexGrow: 1, overflow: 'hidden', px: 3 }}>
-      <Link href="/checklist" color="inherit" sx={{ textDecoration: "none" }}>
+      <Link href="/todo" color="inherit" sx={{ textDecoration: "none" }}>
         <StyledPaper sx={{ my: 6, mx: 'auto', p: 2, background: "#ADBF97" }}>
           <Grid container wrap="nowrap" spacing={3}>
             <Grid item >
