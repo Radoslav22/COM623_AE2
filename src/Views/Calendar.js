@@ -39,11 +39,11 @@ export default function TemporaryDrawer(props) {
 
   const eventFormSchema = yup
     .object({
-      event: yup.string().required("you must tell us if you have exercised"),
-      notes: yup.string().required("you must tell us if you consumed your veg"),
-      date: yup.string().required("you must tell us if you drank 2l of water"),
-      stime: yup.string().required("you must tell us if you kept tour diet"),
-      etime: yup.string().required("you must tell us if you kept tour diet"),
+      event: yup.string().required("you must define event name"),
+      notes: yup.string().required("you must tell more about your event"),
+      date: yup.string().required("you must define date"),
+      stime: yup.string().required("you must define start time"),
+      etime: yup.string().required("you must define end time"),
     })
     .required();
 
