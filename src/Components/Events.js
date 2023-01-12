@@ -1,18 +1,13 @@
 import React, { useState, useEffect } from "react";
-import PropTypes from "prop-types";
-import useAuth from "../services/firebase/useAuth";
-
-
-import styled from "styled-components";
-
-import Histogram from "./Histogram";
-import * as dayjs from "dayjs";
-import relativeTime from "dayjs/plugin/relativeTime";
 import useEvent from "../services/useEvent";
 import Stack from '@mui/material/Stack';
 import Alert from '@mui/material/Alert';
+import { Container } from "@mui/system";
+import { Grid, ListItem } from "@mui/material";
+import Box from '@mui/material/Box';
+import * as dayjs from "dayjs";
+import relativeTime from "dayjs/plugin/relativeTime";
 dayjs.extend(relativeTime);
-
 
 function Event(props) {
     const [events, setEvents] = useState([]);
@@ -28,6 +23,8 @@ function Event(props) {
                 events.push({ ...doc.data(), ...{ id: doc.id } });
             });
             setEvents(events.reverse());
+            console.log(events);
+
         }
     };
 
@@ -37,15 +34,22 @@ function Event(props) {
 
 
     return (
-        <Stack sx={{ width: '100%' }} spacing={2}>
+        <Box sx={{ overflow: 'hidden', px: 3 }}>
 
 
 
 
             {events.map((c) => (
-                <Alert severity="error" key={c.id}>{c.event}</Alert>
-            ))}
-        </Stack>
+                <Grid key={c.id} spacing={5} p={2}>
+                    <ListItem sx={{ background: "#9DC4B5" }} >
+                        <h5>{c.event} </h5><br />
+                        <h6>Deadline {c.notes}</h6>
+                        {/* <h5>{dayjs().to(c.time._seconds.toDate())}</h5> */}
+                    </ListItem>
+                </Grid>
+            ))
+            }
+        </Box >
     );
 }
 

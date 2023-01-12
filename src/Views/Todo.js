@@ -8,6 +8,7 @@ import Paper from '@mui/material/Paper';
 import { EventAvailable } from "@mui/icons-material";
 import ProgressBar from "../Components/ProgressBar";
 import useAuth from "../services/firebase/useAuth";
+import Event from "../Components/Events";
 
 
 
@@ -24,7 +25,7 @@ const Todo = () => {
   return (
     <Box sx={{ flexGrow: 1, overflow: 'hidden', px: 3 }}>
 
-      <Typography align="center" sx={{ mt: 2 }}><h4>Hello, {user.displayName || user.email}</h4>  </Typography>
+      <Typography align="center" sx={{ marginRight: "15vh", mt: 2 }}><h4>Hello, {user.displayName || user.email}</h4>  </Typography>
 
       <StyledPaper sx={{ my: 6, mx: 'auto', p: 2, background: "#E2EB98" }}>
         <Grid container wrap="nowrap" spacing={3}>
@@ -44,8 +45,9 @@ const Todo = () => {
 
       </StyledPaper>
 
-      <Typography><h4>To do</h4></Typography>
-      <Typography><h4>In progress</h4></Typography>
+      <Typography sx={{ textAlign: "center", marginRight: "40vh" }}><h4>To do</h4></Typography>
+      <Typography sx={{ textAlign: "center", marginRight: "31vh" }}><h4>In progress</h4></Typography>
+      <Event />
     </Box >
   );
 };
