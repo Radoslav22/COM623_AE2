@@ -7,7 +7,7 @@ import { useTimer } from "../Components/CountTimer"
 import MuiButton from '@mui/material/Button';
 
 function Timer(props) {
-    const { pause, reset, running, seconds, start, stop } = useTimer();
+    const { pause, running, seconds, start, stop } = useTimer();
     return (
         <Box sx={{ flexGrow: 1, overflow: 'hidden', px: 3, textAlign: "center", marginLeft: "auto", marginRight: "auto" }} >
 

@@ -12,38 +12,19 @@ import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
-import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
-import InboxIcon from '@mui/icons-material/MoveToInbox';
-import MailIcon from '@mui/icons-material/Mail';
 import useAuth from "../services/firebase/useAuth";
 import { AccountCircle, Home, Timer, CalendarToday, PlaylistAddCheck } from '@mui/icons-material';
 import SolentLogo from "../assets/Solentlogo.png"
-import { white } from '@mui/material/colors';
 import { Link } from 'react-router-dom';
+import MenuItem from '@mui/material/MenuItem';
+import Menu from '@mui/material/Menu';
 
 const drawerWidth = 240;
 
-const Main = styled('main', { shouldForwardProp: (prop) => prop !== 'open' })(
-    ({ theme, open }) => ({
-        flexGrow: 1,
-        padding: theme.spacing(3),
-        transition: theme.transitions.create('margin', {
-            easing: theme.transitions.easing.sharp,
-            duration: theme.transitions.duration.leavingScreen,
-        }),
-        marginLeft: `-${drawerWidth}px`,
-        ...(open && {
-            transition: theme.transitions.create('margin', {
-                easing: theme.transitions.easing.easeOut,
-                duration: theme.transitions.duration.enteringScreen,
-            }),
-            marginLeft: 0,
-        }),
-    }),
-);
+
 
 const AppBar = styled(MuiAppBar, {
     shouldForwardProp: (prop) => prop !== 'open',
@@ -74,6 +55,17 @@ const DrawerHeader = styled('div')(({ theme }) => ({
 export default function HeaderMenu() {
     const theme = useTheme();
     const [open, setOpen] = React.useState(false);
+    const [auth] = React.useState(true);
+    const [anchorEl, setAnchorEl] = React.useState(null);
+
+
+    const handleMenu = (event) => {
+        setAnchorEl(event.currentTarget);
+    };
+
+    const handleClose = () => {
+        setAnchorEl(null);
+    };
 
     const { user, signUserOut } = useAuth();
     if (!user.uid) { return "" }
@@ -101,19 +93,41 @@ export default function HeaderMenu() {
                         <MenuIcon fontSize='large' />
                     </IconButton>
                     <Typography >
-                        <h6> {user.displayName || user.email}  <span onClick={signUserOut}>(Logout)</span></h6>
+                        <h6> </h6>
                     </Typography>
                     <img src={SolentLogo} alt="Solent Logo" style={{ display: 'block', marginLeft: 'auto', marginRight: 'auto', height: '36px' }} ></img>
-                    <IconButton
-                        size="large"
-                        aria-label="account of current user"
-                        aria-controls="menu-appbar"
-                        aria-haspopup="true"
-
-                        color="black"
-                    >
-                        <AccountCircle fontSize='large' />
-                    </IconButton>
+                    {auth && (
+                        <div>
+                            <IconButton
+                                size="large"
+                                aria-label="account of current user"
+                                aria-controls="menu-appbar"
+                                aria-haspopup="true"
+                                onClick={handleMenu}
+                                color="black"
+                            >
+                                <AccountCircle fontSize='large' />
+                            </IconButton>
+                            <Menu
+                                id="menu-appbar"
+                                anchorEl={anchorEl}
+                                anchorOrigin={{
+                                    vertical: 'top',
+                                    horizontal: 'right',
+                                }}
+                                keepMounted
+                                transformOrigin={{
+                                    vertical: 'top',
+                                    horizontal: 'right',
+                                }}
+                                open={Boolean(anchorEl)}
+                                onClose={handleClose}
+                            >
+                                <MenuItem onClick={handleClose}>{user.displayName || user.email}  </MenuItem>
+                                <MenuItem onClick={handleClose}><span onClick={signUserOut}>Logout</span></MenuItem>
+                            </Menu>
+                        </div>
+                    )}
                 </Toolbar>
 
             </AppBar>
