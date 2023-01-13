@@ -11,6 +11,7 @@ import useAuth from "../services/firebase/useAuth";
 import SubmitForm from '../Components/SubmitEventForm';
 import Events from "../Components/Events";
 import { useState, useEffect } from "react";
+import MuiButton from '@mui/material/Button';
 
 
 
@@ -57,35 +58,38 @@ function Calendar() {
 
   const list = (anchor) => (
     <Box
-      sx={{ width: anchor === 'bottom' ? 'auto' : 250 }}
-      role="presentation">
-      {/* !!FORM!! */}
+      sx={{ width: anchor === 'bottom' ? 'auto' : 250, textAlign: "center" }}
+      role="presentation" >
+
       <SubmitForm onSubmit={eventSubmit} />
-      <button onClick={toggleDrawer(anchor, false)}> Cancel</button>
+
+      <MuiButton onClick={toggleDrawer(anchor, false)} sx={{ background: "#BAD9A2", color: 'black', mt: 3, mb: 2 }} >Cancel</MuiButton>
     </Box>
   );
 
   return (
-    <div>
+    <div style={{ textAlign: "center" }}>
 
       <LocalizationProvider dateAdapter={AdapterDayjs}>
         <CalendarPicker />
       </LocalizationProvider>
-      <Events />
+
 
       {['bottom'].map((anchor) => (
         <React.Fragment key={anchor}>
-          <Button onClick={toggleDrawer(anchor, true)}>Add</Button>
+          <Button sx={{ background: "#BAD9A2", color: "black" }} onClick={toggleDrawer(anchor, true)}>Add Event</Button>
           <Drawer
             anchor={anchor}
             open={state[anchor]}
             onClose={toggleDrawer(anchor, false)}
+
           >
 
             {list(anchor)}
           </Drawer>
         </React.Fragment>
       ))}
+      <Events />
     </div>
   );
 }

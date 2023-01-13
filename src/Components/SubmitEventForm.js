@@ -38,110 +38,112 @@ function SubmitForm(props) {
         onSubmit({ ...data });
     };
     return (
-        <form onSubmit={handleSubmit(onFormSubmit)}>
-            <List>
+        <div style={{ textAlign: "center" }}>
+            <form onSubmit={handleSubmit(onFormSubmit)}>
+                <List >
 
+                    <ListItem disablePadding >
+                        <ListItem sx={{ marginLeft: 10 }}>
+
+                            <TextField
+
+
+                                required
+
+                                id="event"
+                                label="Name Event"
+                                name="event"
+                                autoComplete="event"
+                                type='text'
+                                autoFocus
+                                {...register("event")}
+                            />
+
+
+
+                            <ListItemText />
+                        </ListItem>
+                    </ListItem>
+
+                </List>
+                <Divider />
                 <ListItem disablePadding>
-                    <ListItem>
-
+                    <ListItem sx={{ marginLeft: 10 }}>
                         <TextField
-                            margin="normal"
+
                             required
 
-                            id="event"
-                            label="Name Event"
-                            name="event"
-                            autoComplete="event"
-                            type='text'
-                            autoFocus
-                            {...register("event")}
+                            name="notes"
+                            label="Event notes"
+                            type="text"
+                            id="notes"
+                            autoComplete="notes-event"
+                            {...register("notes")}
                         />
-
 
 
                         <ListItemText />
                     </ListItem>
                 </ListItem>
+                <Divider />
+                <ListItem disablePadding>
+                    <ListItem sx={{ marginLeft: 10 }}>
+                        <TextField
 
-            </List>
-            <Divider />
-            <ListItem disablePadding>
-                <ListItem>
-                    <TextField
-                        margin="normal"
-                        required
+                            required
 
-                        name="notes"
-                        label="Notes for the event"
-                        type="text"
-                        id="notes"
-                        autoComplete="notes-event"
-                        {...register("notes")}
-                    />
+                            name="date"
+                            label="Event Date"
+                            type="date"
+                            id="date"
+                            autoComplete="date"
+                            {...register('date')}
+
+                        />
 
 
-                    <ListItemText />
+                        <ListItemText />
+                    </ListItem>
                 </ListItem>
-            </ListItem>
-            <Divider />
-            <ListItem disablePadding>
-                <ListItem>
-                    <TextField
-                        margin="normal"
-                        required
+                <Divider />
+                <ListItem disablePadding>
+                    <ListItem sx={{ marginLeft: 5 }}>
+                        <TextField
 
-                        name="date"
-                        label="Date Event"
-                        type="date"
-                        id="date"
-                        autoComplete="date"
-                        {...register('date')}
+                            required
 
-                    />
+                            name="stime"
+                            label="Start time"
+                            type="time"
+                            id="stime"
+                            autoComplete="stime"
+                            {...register("stime")}
+                        />
+                        <TextField
+
+                            required
+
+                            name="etime"
+                            label="End time"
+                            type="time"
+                            id="etime"
+                            autoComplete="etime"
+                            {...register("etime")}
+                        />
 
 
-                    <ListItemText />
+                        <ListItemText />
+                    </ListItem>
                 </ListItem>
-            </ListItem>
-            <Divider />
-            <ListItem disablePadding>
-                <ListItem>
-                    <TextField
-                        margin="normal"
-                        required
+                <Divider />
+                <List>
+                    <ListItemIcon>
+                        <CustomButton text='Create Event' type='submit'></CustomButton>
 
-                        name="stime"
-                        label="Start time"
-                        type="time"
-                        id="stime"
-                        autoComplete="stime"
-                        {...register("stime")}
-                    />
-                    <TextField
-                        margin="normal"
-                        required
-
-                        name="etime"
-                        label="etime"
-                        type="time"
-                        id="etime"
-                        autoComplete="etime"
-                        {...register("etime")}
-                    />
-
-
-                    <ListItemText />
-                </ListItem>
-            </ListItem>
-            <Divider />
-            <List>
-                <ListItemIcon>
-                    <CustomButton text='Create Event' type='submit'></CustomButton>
-
-                </ListItemIcon>
-            </List>
-        </form>
-
+                    </ListItemIcon>
+                </List>
+            </form>
+        </div>
     )
 }
 
