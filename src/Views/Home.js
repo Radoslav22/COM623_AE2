@@ -58,7 +58,7 @@ export default function AutoGridNoWrap() {
 
             </Grid>
             <Grid item xs>
-              <CalendarToday sx={{ fontSize: "100px", color: "white", display: 'block', marginLeft: '18%', marginRight: 'auto' }} />
+              <CalendarToday sx={{ fontSize: "100px", color: "white", display: 'block', marginLeft: '10%', marginRight: 'auto' }} />
             </Grid>
           </Grid>
         </StyledPaper>

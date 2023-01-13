@@ -23,7 +23,7 @@ const Todo = () => {
     color: theme.palette.text.primary,
   }));
   return (
-    <Box sx={{ flexGrow: 1, overflow: 'hidden', px: 3 }}>
+    <Box sx={{ flexGrow: 1, overflow: 'hidden', px: 2 }}>
 
       <Typography align="center" sx={{ marginRight: "15vh", mt: 2 }}><h4>Hello, {user.displayName || user.email}</h4>  </Typography>
 
@@ -38,15 +38,15 @@ const Todo = () => {
           </Grid>
         </Grid>
         <ProgressBar percentage={30} />
-        <Grid >
-          <h6 >0% 100%</h6>
+        <Grid sx={{ display: "flex" }}>
+          <h6 >0%</h6><h6 style={{ marginLeft: "85%" }}>100%</h6>
 
         </Grid>
 
       </StyledPaper>
 
-      <Typography sx={{ textAlign: "center", marginRight: "40vh" }}><h4>To do</h4></Typography>
-      <Typography sx={{ textAlign: "center", marginRight: "31vh" }}><h4>In progress</h4></Typography>
+      <Typography sx={{ textAlign: "center", marginRight: "40vh" }}><h4>To do{Event.docs}</h4></Typography>
+
       <Event />
     </Box >
   );

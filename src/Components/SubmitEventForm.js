@@ -27,8 +27,8 @@ function SubmitForm(props) {
     const {
         register,
         handleSubmit,
-        formState: { errors },
-        watch,
+
+
     } = useForm({
         resolver: yupResolver(eventFormSchema),
         defaultValues: { event: "", notes: "", date: "", stime: "", etime: "" },

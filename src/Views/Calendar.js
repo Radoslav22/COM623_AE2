@@ -10,7 +10,7 @@ import { useHistory } from 'react-router-dom';
 import useAuth from "../services/firebase/useAuth";
 import SubmitForm from '../Components/SubmitEventForm';
 import Events from "../Components/Events";
-import { useState, useEffect } from "react";
+
 import MuiButton from '@mui/material/Button';
 
 
@@ -18,8 +18,8 @@ import MuiButton from '@mui/material/Button';
 function Calendar() {
   const history = useHistory();
   const { user } = useAuth();
-  const { getEvent } = useEvent();
-  const [events] = useState([]);
+
+
   const [state, setState] = React.useState({
 
     add: false,
@@ -63,7 +63,7 @@ function Calendar() {
 
       <SubmitForm onSubmit={eventSubmit} />
 
-      <MuiButton onClick={toggleDrawer(anchor, false)} sx={{ background: "#BAD9A2", color: 'black', mt: 3, mb: 2 }} >Cancel</MuiButton>
+      <MuiButton onClick={toggleDrawer(anchor, false)} sx={{ background: "#BAD9A2", color: 'black' }} >Cancel</MuiButton>
     </Box>
   );
 
@@ -77,7 +77,7 @@ function Calendar() {
 
       {['bottom'].map((anchor) => (
         <React.Fragment key={anchor}>
-          <Button sx={{ background: "#BAD9A2", color: "black" }} onClick={toggleDrawer(anchor, true)}>Add Event</Button>
+          <Button sx={{ background: "#BAD9A2", color: "black", marginBottom: "5%" }} onClick={toggleDrawer(anchor, true)}>Add Event</Button>
           <Drawer
             anchor={anchor}
             open={state[anchor]}

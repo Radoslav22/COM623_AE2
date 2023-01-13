@@ -3,6 +3,7 @@ import styled from "styled-components";
 import Tile from "../Components/Tile";
 import Form from "../Components/LoginForm";
 import useAuth from "../services/firebase/useAuth";
+import { Redirect } from "react-router-dom";
 
 
 
@@ -33,6 +34,7 @@ function Join(props) {
     try {
       const { email, password } = data;
       await createEmailUser(email, password);
+      Redirect('/');
     } catch (e) {
       setServerErrorMessage(e.message);
     }
@@ -42,6 +44,7 @@ function Join(props) {
 
       if (method === "google") {
         await signInGoogleUser();
+        Redirect('/')
       }
     } catch (error) {
       console.log("error");
