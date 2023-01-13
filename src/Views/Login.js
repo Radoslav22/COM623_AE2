@@ -1,7 +1,6 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
 import styled from "styled-components";
-import Form from "../Components/LoginForm2";
+import Form from "../Components/LoginForm";
 import Tile from "../Components/Tile";
 import useAuth from "../services/firebase/useAuth";
 

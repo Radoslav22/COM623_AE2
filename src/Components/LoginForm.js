@@ -1,112 +1,133 @@
-import PropTypes from "prop-types";
-import React, { useState } from "react";
-import styled from "styled-components";
-import Button from "../Components/Button";
-import { useForm } from "react-hook-form";
-import Input from "../Components/Input";
+import * as React from 'react';
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import Microsoft from "../assets/microsoft.png"
-
-
-function LoginForm(props) {
-  const { buttonText, onEmailSubmit, onSocialSubmit } = props;
-  const [displayEmail, setDisplayEmail] = useState(false);
-
-  const loginFormSchema = yup
-    .object({
-      email: yup
-        .string()
-        .email("please enter a valid email")
-        .required("please enter a email"),
-      password: yup
-        .string()
-        .required("please enter a password")
-        .min(5, "password must be 5 characters long"),
-    })
-    .required();
-
-  const { register, handleSubmit, formState: { errors }, } = useForm({ resolver: yupResolver(loginFormSchema), });
-
-  const StyledErrorLabel = styled.label`
-    color: red;
-    font-weight: bolder;
-    margin: 1% 0 4% 0;
-  `;
-
-  const StyledHeading = styled.h2`
-    text-align: center;
-    margin-top: 2%;
-    
-  `;
-
-  const StyledSocialIconArea = styled.div`
-    display: flex;
-    justify-content: space-around;
-    img {
-      width: 50px;
-      height: 50px;
-    }
-  `;
+import { useForm } from "react-hook-form";
+import Button from "./Button";
+import CssBaseline from '@mui/material/CssBaseline';
+import TextField from '@mui/material/TextField';
+import Link from '@mui/material/Link';
+import Grid from '@mui/material/Grid';
+import Box from '@mui/material/Box';
+import Typography from '@mui/material/Typography';
+import Container from '@mui/material/Container';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
+import Google from '../assets/google.png'
 
 
 
-  const handleClick = (e) => {
-    e.preventDefault();
-    setDisplayEmail(!displayEmail);
-  };
 
-  const errorBorder = (error) => error && { borderColor: "red" };
-  return (
-    <React.Fragment>
-      <StyledSocialIconArea>
+function Copyright(props) {
 
-        <img src={Microsoft} alt="#" onClick={() => onSocialSubmit("google")} />
-      </StyledSocialIconArea>
-      <StyledHeading> OR </StyledHeading>
-
-      {!displayEmail && <Button onClick={handleClick} text="Email" />}
-
-      {displayEmail && (
-        <form onSubmit={handleSubmit(onEmailSubmit)}>
-          <p>
-            <label> Email </label>
-          </p>
-          <p>
-            <Input
-              type="text"
-              placeholder="Student@solent.ac.uk"
-              style={errorBorder(errors.email)}
-              {...register("email")}
-            />
-            <StyledErrorLabel>{errors?.email?.message}</StyledErrorLabel>
-          </p>
-
-          <label> Password </label>
-          <p>
-            <Input
-              type="password"
-              name="password"
-              placeholder="Password"
-              {...register("password")}
-              style={errorBorder(errors.password)}
-            />
-            <StyledErrorLabel>{errors?.password?.message}</StyledErrorLabel>
-          </p>
-          <Button text={buttonText} type="submit" />
-        </form>
-      )}
-    </React.Fragment>
-  );
+    return (
+        <Typography variant="body2" color="text.secondary" align="center" {...props}>
+            {'Copyright © '}
+            <Link color="inherit" href="https://mui.com/">
+                Website
+            </Link>{' '}
+            {new Date().getFullYear()}
+            {'.'}
+        </Typography>
+    );
 }
 
-LoginForm.propTypes = {
-  buttonText: PropTypes.string,
-};
+const theme = createTheme();
 
-LoginForm.defaultProps = {
-  buttonText: "JOIN",
-};
+export default function SignIn(props) {
+    const { buttonText, onEmailSubmit, onSocialSubmit } = props;
 
-export default LoginForm;
+
+
+    const loginFormSchema = yup
+        .object({
+            email: yup
+                .string()
+                .email("please enter a valid email")
+                .required("please enter a email"),
+            password: yup
+                .string()
+                .required("please enter a password")
+                .min(5, "password must be 5 characters long"),
+        })
+        .required();
+    const { register, handleSubmit, formState: { errors }, } = useForm({ resolver: yupResolver(loginFormSchema), });
+
+
+
+    const errorBorder = (error) => error && { borderColor: "red" };
+    return (
+        <ThemeProvider theme={theme}>
+            <Container component="main" maxWidth="xs">
+                <CssBaseline />
+                <Box
+                    sx={{
+                        marginTop: 8,
+                        display: 'flex',
+                        flexDirection: 'column',
+                        alignItems: 'center',
+                    }}
+                >
+
+                    <Typography component="h1" variant="h5">
+                        Sign in
+                    </Typography><br />
+                    <img src={Google} alt="#" onClick={() => onSocialSubmit("google")} style={{ height: "50px" }} /><br />
+                    <Typography component="h2" variant="h6">
+                        OR
+                    </Typography>
+                    <form onSubmit={handleSubmit(onEmailSubmit)}>
+
+                        <TextField
+                            margin="normal"
+                            required
+                            fullWidth
+                            id="email"
+                            label="Email Address"
+                            name="email"
+                            autoComplete="email"
+                            type='text'
+                            autoFocus
+
+                            {...register("email")}
+                        />
+                        <p>{errors?.email?.message}</p>
+                        <TextField
+                            margin="normal"
+                            required
+                            fullWidth
+                            name="password"
+                            label="Password"
+                            type="password"
+                            id="password"
+                            autoComplete="current-password"
+
+                            {...register("password")}
+                        />
+                        <p>{errors?.password?.message}</p>
+
+                        <Button
+                            text={buttonText}
+                            type="submit"
+
+                        />
+                    </form>
+
+                    <Grid container sx={{ textAlign: "center" }}>
+
+                        <Grid item xs>
+                            <Link href="/join" variant="body2">
+                                {"Don't have an account? Sign Up"}
+                            </Link>
+                        </Grid>
+                    </Grid>
+
+
+
+
+
+                </Box>
+
+                <Copyright sx={{ mt: 8, mb: 4 }} />
+            </Container>
+        </ThemeProvider >
+    );
+}
